@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/currentStatusText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btnInCabin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="In Cabin"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnInMeeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="In Meeting"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnOutOfOffice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Out of Office"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btnResumeAutomatic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Resume Automatic Status"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log Out" />
+
+</LinearLayout>
