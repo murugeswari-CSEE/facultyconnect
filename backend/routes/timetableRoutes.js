@@ -1,5 +1,5 @@
 const express = require('express');
-const Timetable = require('../models/Timetable');
+const Timetable = require('../models/timetable');
 
 const router = express.Router();
 
