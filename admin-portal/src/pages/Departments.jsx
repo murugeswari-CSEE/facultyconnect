@@ -6,7 +6,7 @@ function Departments() {
   const [name, setName] = useState('');
 
   const fetchDepts = () => {
-    axios.get('http://localhost:5000/api/departments').then((res) => setDepartments(res.data));
+    axios.get('https://facultyconnect-241s.onrender.com/api/departments').then((res) => setDepartments(res.data));
   };
 
   useEffect(() => { fetchDepts(); }, []);
@@ -14,7 +14,7 @@ function Departments() {
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/departments', { name });
+      await axios.post('https://facultyconnect-241s.onrender.com/api/departments', { name });
       setName('');
       fetchDepts();
     } catch (err) {
@@ -23,7 +23,7 @@ function Departments() {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/departments/${id}`);
+    await axios.delete(`https://facultyconnect-241s.onrender.com/api/departments/${id}`);
     fetchDepts();
   };
 

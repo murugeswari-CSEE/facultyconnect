@@ -10,7 +10,7 @@ object RetrofitClient {
 
     // Using ADB reverse tcp:5000 tcp:5000 during development —
     // "localhost" on the phone routes through the USB cable to your laptop.
-    private const val BASE_URL = "http://localhost:5000/"
+    private const val BASE_URL = "https://facultyconnect-241s.onrender.com/"
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY

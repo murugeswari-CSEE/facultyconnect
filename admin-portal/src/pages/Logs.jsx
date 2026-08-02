@@ -5,7 +5,7 @@ function Logs() {
   const [logs, setLogs] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/logs').then((res) => setLogs(res.data));
+    axios.get('https://facultyconnect-241s.onrender.com/api/logs').then((res) => setLogs(res.data));
   }, []);
 
   return (

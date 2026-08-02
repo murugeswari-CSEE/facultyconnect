@@ -10,7 +10,7 @@ const statusColors = {
   'Out of Office': '#e74c3c',
 };
 
-const socket = io('http://localhost:5000');
+const socket = io('https://facultyconnect-241s.onrender.com');
 
 function App() {
   const [professors, setProfessors] = useState([]);
@@ -19,14 +19,14 @@ function App() {
   const [departmentFilter, setDepartmentFilter] = useState('All');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/professors')
+    axios.get('https://facultyconnect-241s.onrender.com/api/professors')
       .then((res) => setProfessors(res.data))
       .catch((err) => console.error('Error fetching professors:', err));
   }, []);
 
   useEffect(() => {
     professors.forEach((prof) => {
-      axios.get(`http://localhost:5000/api/status/${prof._id}`)
+      axios.get(`https://facultyconnect-241s.onrender.com/api/status/${prof._id}`)
         .then((res) => {
           setStatuses((prev) => ({ ...prev, [prof._id]: res.data }));
         })
@@ -36,7 +36,7 @@ function App() {
 
   useEffect(() => {
     socket.on('statusUpdate', (data) => {
-      axios.get(`http://localhost:5000/api/status/${data.professorId}`)
+      axios.get(`https://facultyconnect-241s.onrender.com/api/status/${data.professorId}`)
         .then((res) => {
           setStatuses((prev) => ({ ...prev, [data.professorId]: res.data }));
         })

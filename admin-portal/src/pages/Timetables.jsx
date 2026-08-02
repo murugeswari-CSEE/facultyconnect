@@ -13,13 +13,13 @@ function Timetables() {
   const [slots, setSlots] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/professors')
+    axios.get('https://facultyconnect-241s.onrender.com/api/professors')
       .then((res) => setProfessors(res.data));
   }, []);
 
   const fetchSlots = (id) => {
     if (!id) return;
-    axios.get(`http://localhost:5000/api/timetables/${id}`)
+    axios.get(`https://facultyconnect-241s.onrender.com/api/timetables/${id}`)
       .then((res) => setSlots(res.data));
   };
 
@@ -30,7 +30,7 @@ function Timetables() {
   const handleAddSlot = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/timetables', {
+      await axios.post('https://facultyconnect-241s.onrender.com/api/timetables', {
         professor: professorId, day, startTime, endTime, subject, classroom, batch,
       });
       setSubject(''); setClassroom(''); setBatch(''); setStartTime(''); setEndTime('');

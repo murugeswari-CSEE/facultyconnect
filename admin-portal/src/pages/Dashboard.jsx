@@ -12,7 +12,7 @@ function Dashboard() {
   const [editDept, setEditDept] = useState('');
 
   const fetchProfessors = () => {
-    axios.get('http://localhost:5000/api/professors')
+    axios.get('https://facultyconnect-241s.onrender.com/api/professors')
       .then((res) => setProfessors(res.data))
       .catch((err) => console.error('Error fetching professors:', err));
   };
@@ -24,7 +24,7 @@ function Dashboard() {
   const handleAddProfessor = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/professors', {
+      await axios.post('https://facultyconnect-241s.onrender.com/api/professors', {
         name, email, password, department,
       });
       setName(''); setEmail(''); setPassword(''); setDepartment('');
@@ -38,7 +38,7 @@ function Dashboard() {
   const handleDelete = async (id) => {
     if (!window.confirm('Delete this professor?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/professors/${id}`);
+      await axios.delete(`https://facultyconnect-241s.onrender.com/api/professors/${id}`);
       fetchProfessors();
     } catch (err) {
       console.error('Error deleting professor:', err);
@@ -57,7 +57,7 @@ function Dashboard() {
 
   const saveEdit = async (id) => {
     try {
-      await axios.put(`http://localhost:5000/api/professors/${id}`, {
+      await axios.put(`https://facultyconnect-241s.onrender.com/api/professors/${id}`, {
         name: editName,
         department: editDept,
       });

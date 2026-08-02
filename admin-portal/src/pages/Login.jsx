@@ -13,7 +13,7 @@ function Login() {
     setError('');
 
     try {
-      const res = await axios.post('http://localhost:5000/api/admin/login', {
+      const res = await axios.post('https://facultyconnect-241s.onrender.com/api/admin/login', {
         email,
         password,
       });
