@@ -1,6 +1,6 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const Professor = require('../models/Professor');
+const Professor = require('../models/professor');
 const StatusLog = require('../models/StatusLog');
 
 const router = express.Router();
