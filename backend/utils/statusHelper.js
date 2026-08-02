@@ -1,4 +1,4 @@
-const Timetable = require('../models/Timetable');
+const Timetable = require('../models/timetable');
 
 // Returns the professor's live class status, or null if not in class right now
 async function getLiveClassStatus(professorId) {
