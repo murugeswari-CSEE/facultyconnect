@@ -1,5 +1,5 @@
 const express = require('express');
-const Professor = require('../models/Professor');
+const Professor = require('../models/professor');
 const { getLiveClassStatus } = require('../utils/statusHelper');
 
 const router = express.Router();
