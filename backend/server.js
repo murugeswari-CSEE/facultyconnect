@@ -62,7 +62,48 @@ io.on('connection', (socket) => {
     console.log('Client disconnected:', socket.id);
   });
 });
+// ---- Live timetable watcher ----
+// Every 30 seconds, recompute each professor's status. If it changed (a class started or
+// ended), push it to all dashboards so they update without anyone touching a button.
+const Professor = require('./models/professor');
+const StatusLog = require('./models/StatusLog');
+const { getEffectiveStatus } = require('./utils/statusHelper');
 
+const lastSeen = new Map();
+
+setInterval(async () => {
+  try {
+    const professors = await Professor.find();
+    for (const prof of professors) {
+      const eff = await getEffectiveStatus(prof);
+      const key = [eff.status, eff.subject || '', eff.location || '', eff.note || ''].join('|');
+      const inClass = eff.status === 'In Class';
+      const id = String(prof._id);
+      const prev = lastSeen.get(id);
+      lastSeen.set(id, { key, inClass });
+
+      if (!prev || prev.key === key) continue;
+
+      io.emit('statusUpdate', { professorId: prof._id, status: eff.status });
+
+      if (inClass && !prev.inClass) {
+        await StatusLog.create({
+          professor: prof._id,
+          action: 'Automatic: class started',
+          details: `${eff.subject} in Room ${eff.classroom}`,
+        });
+      } else if (!inClass && prev.inClass && prof.isAutomatic) {
+        await StatusLog.create({
+          professor: prof._id,
+          action: 'Automatic: class ended',
+          details: `Status is now ${eff.status}`,
+        });
+      }
+    }
+  } catch (err) {
+    console.error('Status watcher error:', err.message);
+  }
+}, 30 * 1000);
 const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, "0.0.0.0", () => {

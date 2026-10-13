@@ -10,6 +10,9 @@ const professorSchema = new mongoose.Schema({
     enum: ['In Cabin', 'In Meeting', 'Out of Office'],
     default: 'Out of Office',
   },
+  location: { type: String, default: '' },
+  statusNote: { type: String, default: '' },
+  manualSetAt: { type: Date, default: null },
   isAutomatic: { type: Boolean, default: true },
 }, { timestamps: true });
 

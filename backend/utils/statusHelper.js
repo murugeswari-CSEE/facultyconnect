@@ -1,5 +1,4 @@
 const Timetable = require('../models/timetable');
-
 async function getLiveClassStatus(professorId) {
   const now = new Date();
   const istOffsetMs = 5.5 * 60 * 60 * 1000;

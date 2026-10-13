@@ -101,6 +101,7 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
+
     private fun requestLocationPermissions() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             != PackageManager.PERMISSION_GRANTED

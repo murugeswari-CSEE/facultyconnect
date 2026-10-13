@@ -27,4 +27,18 @@ class SessionManager(context: Context) {
     }
 
     fun isLoggedIn(): Boolean = getProfessorId() != null
+
+    // ---- Admin session ----
+
+    fun saveAdminToken(token: String) {
+        prefs.edit().putString("adminToken", token).apply()
+    }
+
+    fun getAdminToken(): String? = prefs.getString("adminToken", null)
+
+    fun isAdminLoggedIn(): Boolean = getAdminToken() != null
+
+    fun clearAdminSession() {
+        prefs.edit().remove("adminToken").apply()
+    }
 }
