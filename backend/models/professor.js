@@ -7,7 +7,7 @@ const professorSchema = new mongoose.Schema({
   department: { type: String, required: true },
   manualStatus: {
     type: String,
-    enum: ['In Cabin', 'In Meeting', 'Out of Office'],
+    enum: ['In Cabin', 'In Meeting', 'Out of Office', 'On Leave'],
     default: 'Out of Office',
   },
   location: { type: String, default: '' },

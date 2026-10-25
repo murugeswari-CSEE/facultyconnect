@@ -6,7 +6,7 @@ const StatusLog = require('../models/StatusLog');
 
 const router = express.Router();
 
-const VALID_STATUSES = ['In Cabin', 'In Meeting', 'Out of Office'];
+const VALID_STATUSES = ['In Cabin', 'In Meeting', 'Out of Office', 'On Leave'];
 
 // Create professor
 router.post('/', async (req, res) => {
